@@ -1,11 +1,21 @@
+# 检查文件在不在里面;
+import os #载入作业系统 operating system
+
 # 读取档案
-products = []
-with open('products.csv', 'r', encoding='utf-8') as f:
-	for line in f:
-		if '商品, 价格' in line:
-			continue
-		name, price = line.strip().split(',')
-		products.append([name, price])
+products = [] #一定要存在的
+if os.path.isfile('products.csv'): #检查档案在不在
+	print('yeah! find it!')
+	with open('products.csv', 'r', encoding='utf-8') as f:
+		for line in f:
+			if '商品, 价格' in line:
+				continue
+			name, price = line.strip().split(',')
+			products.append([name, price])
+	print(products)
+
+else:
+	print('cannot find it...')
+
 
 # 让使用者输入
 products = []
